@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ExampleSettings extends React.Component {
   constructor(props) {
@@ -51,9 +52,9 @@ class ExampleSettings extends React.Component {
 }
 
 ExampleSettings.propTypes = {
-  selectedAtomIds: React.PropTypes.arrayOf(React.PropTypes.number),
-  onChangeSelection: React.PropTypes.func,
-  onToggleMolecule: React.PropTypes.func,
+  selectedAtomIds: PropTypes.arrayOf(PropTypes.number),
+  onChangeSelection: PropTypes.func,
+  onToggleMolecule: PropTypes.func,
 };
 
 export default ExampleSettings;
