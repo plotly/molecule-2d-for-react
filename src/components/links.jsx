@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   select,
 } from 'd3';
@@ -94,7 +95,7 @@ class Links extends React.Component {
 }
 
 Links.propTypes = {
-  links: React.PropTypes.arrayOf(React.PropTypes.object),
+  links: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Links;

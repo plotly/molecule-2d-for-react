@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   event as d3Event,
   forceLink,
@@ -169,14 +170,14 @@ Molecule2d.defaultProps = {
 };
 
 Molecule2d.propTypes = {
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  modelData: React.PropTypes.shape({
-    nodes: React.PropTypes.array,
-    links: React.PropTypes.array,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  modelData: PropTypes.shape({
+    nodes: PropTypes.array,
+    links: PropTypes.array,
   }).isRequired,
-  selectedAtomIds: React.PropTypes.arrayOf(React.PropTypes.number),
-  onChangeSelection: React.PropTypes.func,
+  selectedAtomIds: PropTypes.arrayOf(PropTypes.number),
+  onChangeSelection: PropTypes.func,
 };
 
 export default Molecule2d;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   drag,
   event as d3Event,
@@ -90,11 +91,11 @@ class Nodes extends React.Component {
 }
 
 Nodes.propTypes = {
-  selectedAtomIds: React.PropTypes.arrayOf(React.PropTypes.number),
-  nodes: React.PropTypes.arrayOf(React.PropTypes.object),
-  onClickNode: React.PropTypes.func,
-  onDragStartedNode: React.PropTypes.func,
-  onDragEndedNode: React.PropTypes.func,
+  selectedAtomIds: PropTypes.arrayOf(PropTypes.number),
+  nodes: PropTypes.arrayOf(PropTypes.object),
+  onClickNode: PropTypes.func,
+  onDragStartedNode: PropTypes.func,
+  onDragEndedNode: PropTypes.func,
 };
 
 export default Nodes;
