@@ -138,6 +138,9 @@ class Molecule2d extends React.Component {
   }
 
   render() {
+    if (!this.props.modelData) {
+      this.props.modelData = { nodes: [], links: [] };
+    }
     this.nodes = moleculeUtils.updateModels(this.nodes || [], this.props.modelData.nodes);
     this.links = moleculeUtils.updateModels(this.links || [], this.props.modelData.links);
 
@@ -167,6 +170,7 @@ Molecule2d.defaultProps = {
   height: 500.0,
   selectedAtomIds: [],
   onChangeSelection: () => {},
+  modelData: { nodes: [], links: [] },
 };
 
 Molecule2d.propTypes = {
