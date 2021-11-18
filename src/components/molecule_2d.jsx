@@ -96,7 +96,7 @@ class Molecule2d extends React.Component {
     // Nodes
     container.selectAll('.node')
       .attr('transform', d =>
-        `translate(${d.x || 0},${d.y || 0})`
+        `translate(${d.x || 0},${d.y || 0})`,
       );
 
     // Links
@@ -112,10 +112,10 @@ class Molecule2d extends React.Component {
     // keep edge labels pinned to the edges
     links.selectAll('text')
       .attr('x', d =>
-        ((d.source.x || 0) + (d.target.x || 0)) / 2.0
+        ((d.source.x || 0) + (d.target.x || 0)) / 2.0,
       )
       .attr('y', d =>
-        ((d.source.y || 0) + (d.target.y || 0)) / 2.0
+        ((d.source.y || 0) + (d.target.y || 0)) / 2.0,
       );
   }
 
@@ -123,14 +123,14 @@ class Molecule2d extends React.Component {
     this.simulation = forceSimulation()
       .force('link', forceLink()
         .distance(d => molViewUtils.withDefault(d.distance, 20))
-        .strength(d => molViewUtils.withDefault(d.strength, 1.0))
+        .strength(d => molViewUtils.withDefault(d.strength, 1.0)),
       )
       .force('charge', forceManyBody())
       .force('center', forceCenter(this.props.width / 2, this.props.height / 2));
 
     this.simulation
-        .nodes(this.nodes)
-        .on('tick', () => this.renderTransform());
+      .nodes(this.nodes)
+      .on('tick', () => this.renderTransform());
 
     this.simulation.force('link')
       .id(d => d.id)
@@ -153,7 +153,7 @@ class Molecule2d extends React.Component {
         <Links
           links={this.links}
         />
-        <Nodes
+        <Nodes // eslint-disable-line react/jsx-indent
           selectedAtomIds={this.state.selectedAtomIds}
           nodes={this.nodes}
           onClickNode={this.onClickNode}

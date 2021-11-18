@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-import Molecule2d from './components/molecule_2d.jsx';
+import Molecule2d from './components/molecule_2d';
 
 export default Molecule2d;

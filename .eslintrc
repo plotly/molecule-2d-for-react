@@ -6,8 +6,11 @@
     "no-underscore-dangle": 1,
     "no-param-reassign": 1,
     "react/jsx-no-bind": 1,
+    "import/no-named-as-default": 1,
+    "import/no-named-as-default-member": 1,
+    "no-restricted-syntax": 1
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "globals": {
     "window": true,
     "document": true,

@@ -34,7 +34,7 @@ module.exports = function(config) {
 
     webpack: {
       module: {
-        loaders: [{
+        rules: [{
           test: /\.(js|jsx)$/, exclude: /(bower_components|node_modules)/,
           loader: 'babel-loader'
         }, {

@@ -37,7 +37,7 @@ class Links extends React.Component {
       .attr('class', 'link-line');
     container.selectAll('.link-line')
       .attr('source', d =>
-        (typeof d.source.id !== 'undefined' ? d.source.id : d.source)
+        (typeof d.source.id !== 'undefined' ? d.source.id : d.source),
       )
       .attr('target', d => (typeof d.target.id !== 'undefined' ? d.target.id : d.target))
       .style('stroke-width', molViewUtils.getBondWidth)

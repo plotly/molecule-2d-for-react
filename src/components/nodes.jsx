@@ -46,12 +46,12 @@ class Nodes extends React.Component {
       .call(drag()
         .on('start', this.props.onDragStartedNode)
         .on('drag', Nodes.onDragged)
-        .on('end', this.props.onDragEndedNode)
+        .on('end', this.props.onDragEndedNode),
       );
 
     container.selectAll('.node')
       .classed('selected', d =>
-        (this.props.selectedAtomIds.indexOf(d.id) !== -1 ? SELECTED_COLOR : '')
+        (this.props.selectedAtomIds.indexOf(d.id) !== -1 ? SELECTED_COLOR : ''),
       );
 
     const radius = scaleSqrt().range([0, 6]);
@@ -63,7 +63,7 @@ class Nodes extends React.Component {
       .style('fill', d => molViewUtils.chooseColor(d, 'white'));
     selectAll('.atom-circle')
       .style('stroke', d =>
-        (this.props.selectedAtomIds.indexOf(d.id) !== -1 ? SELECTED_COLOR : '')
+        (this.props.selectedAtomIds.indexOf(d.id) !== -1 ? SELECTED_COLOR : ''),
       );
 
     // atom labels

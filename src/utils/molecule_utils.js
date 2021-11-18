@@ -65,7 +65,8 @@ const moleculeUtils = {
    */
   updateModels(oldArray, newArray) {
     const sameIds = moleculeUtils.compareIds(
-      oldArray.map(model => model.id), newArray.map(model => model.id)
+      oldArray.map((model) => model.id),
+      newArray.map((model) => model.id),
     );
     if (!sameIds) {
       return newArray;
@@ -90,7 +91,7 @@ const moleculeUtils = {
     // Remove els in oldArray that don't exist in newArray
     for (let i = 0; i < oldArray.length; i += 1) {
       const oldModel = oldArray[i];
-      const newModel = newArray.find(newModelI => newModelI.id === oldModel.id);
+      const newModel = newArray.find((newModelI) => newModelI.id === oldModel.id);
 
       if (!newModel) {
         oldArray.splice(i, 1);

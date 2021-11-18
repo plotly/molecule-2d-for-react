@@ -16,7 +16,7 @@
 
 const molViewUtils = {
   getBondWidth(d) {
-    if (!d || isNaN(parseInt(d.bond, 10))) {
+    if (!d || Number.isNaN(parseInt(d.bond, 10))) {
       throw new Error('Invalid input');
     }
     if (d.bond < 0) {

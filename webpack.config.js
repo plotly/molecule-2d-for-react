@@ -1,5 +1,11 @@
 const InlineEnviromentVariablesPlugin = require('inline-environment-variables-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const path = require('path');
+
+const myEslintOptions = {
+  extensions: [`js`, `ts`],
+  exclude: [`node_modules`],
+};
 
 module.exports = {
   entry: {
@@ -9,30 +15,33 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/js/',
     filename: 'bundle.js',
-    library: true,
-    libraryTarget: 'commonjs2',
+    library: 'commonjs2',
   },
   externals: [
     /^[a-z\-0-9]+$/,
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-      }, {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'eslint-loader',
+        use: {
+          loader: 'babel-loader'
+        }
       }, {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
+        ]
       },
     ],
   },
   devtool: 'source-map',
   plugins: [
     new InlineEnviromentVariablesPlugin(),
+    new ESLintPlugin(myEslintOptions),
   ],
+  resolve: {extensions: ['.js','.jsx']},
 };
