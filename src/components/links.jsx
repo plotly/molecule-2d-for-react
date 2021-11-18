@@ -81,8 +81,7 @@ class Links extends React.Component {
       .attr('class', 'separator separator-triple');
     container.selectAll('.separator-triple')
       .style('stroke', d => molViewUtils.chooseColor(d, 'black'))
-      .style('stroke-width', '1px');
-
+      .style('stroke-width', () => molViewUtils.getBondWidth(1));
     links.exit()
       .remove();
   }
