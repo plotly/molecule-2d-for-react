@@ -22,6 +22,7 @@ import {
   forceSimulation,
   forceCenter,
   select,
+  zoom,
 } from 'd3';
 import Nodes from '../components/nodes.jsx';
 import Links from '../components/links.jsx';
@@ -86,6 +87,22 @@ class Molecule2d extends React.Component {
     d.fy = null;
   }
 
+  initZoom() {
+    if (!this.svg) {
+      return;
+    }
+
+    const zoomHandler = zoom().on('zoom', () => {
+      select(this.svg)
+        .selectAll(function () {
+          return this.childNodes;
+        })
+        .attr('transform', d3Event.transform);
+    });
+
+    select(this.svg).call(zoomHandler);
+  }
+
   renderTransform = () => {
     if (!this.svg) {
       return;
@@ -135,6 +152,10 @@ class Molecule2d extends React.Component {
     this.simulation.force('link')
       .id(d => d.id)
       .links(this.links);
+
+    if (this.props.scrollZoom) {
+      this.initZoom();
+    }
   }
 
   render() {
@@ -171,6 +192,7 @@ Molecule2d.defaultProps = {
   selectedAtomIds: [],
   onChangeSelection: () => {},
   modelData: { nodes: [], links: [] },
+  scrollZoom: false,
 };
 
 Molecule2d.propTypes = {
@@ -182,6 +204,7 @@ Molecule2d.propTypes = {
   }).isRequired,
   selectedAtomIds: PropTypes.arrayOf(PropTypes.number),
   onChangeSelection: PropTypes.func,
+  scrollZoom: PropTypes.bool,
 };
 
 export default Molecule2d;
