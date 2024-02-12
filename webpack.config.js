@@ -17,9 +17,10 @@ module.exports = {
     filename: 'bundle.js',
     library: 'commonjs2',
   },
-  externals: [
-    /^[a-z\-0-9]+$/,
-  ],
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
   module: {
     rules: [
       {
